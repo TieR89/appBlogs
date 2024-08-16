@@ -2,25 +2,23 @@ import { createRouter, createWebHistory } from 'vue-router'
 import PostList from '@/components/PostList.vue'
 import PostDetails from '@/components/PostDetails.vue'
 
+const routes = [
+  {
+    path: '/',
+    name: 'PostList',
+    component: PostList
+  },
+  {
+    path: '/post/:id',
+    name: 'PostDetails',
+    component: PostDetails,
+    props: true
+  }
+]
+
 const router = createRouter({
-  history: createWebHistory(/appBlogs/),
-  routes: [
-    {
-      path: '/',
-      name: 'PostList',
-      component: PostList
-    },
-    {
-      path: '/post/:id',
-      name: 'PostDetails',
-      component: PostDetails,
-      props: true
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      // component: () => import('../views/AboutView.vue')
-    }
-  ]
+  history: createWebHistory(),
+  routes
 })
 
 export default router
