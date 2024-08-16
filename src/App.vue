@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>Vue 3 Blog</h1>
+      <h1 @click="goHome" class="home-link">App Blogs :)</h1>
     </header>
     <main>
       <router-view></router-view>
@@ -10,7 +10,19 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 export default {
-  name: 'App'
+  name: 'App',
+  setup() {
+    const router = useRouter()
+
+    const goHome = () => {
+      router.push({ name: 'PostList' })
+    }
+
+    return {
+      goHome
+    }
+  }
 }
 </script>
