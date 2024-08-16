@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1 @click="goHome" class="home-link">Vue 3 Blog</h1>
+      <h1 @click="goHome" class="home-link">App Blogs :)</h1>
     </header>
     <main>
       <router-view :key="$route.fullPath"></router-view>
