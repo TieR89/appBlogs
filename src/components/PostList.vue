@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <select v-model="selectedUserId" @change="filterPosts">
+  <div class="post-list">
+    <select v-model="selectedUserId" @change="filterPosts" class="user-select">
       <option value="">All Users</option>
       <option v-for="user in users" :key="user.id" :value="user.id">
         {{ user.name }}
       </option>
     </select>
 
-    <ul>
+    <ul class="posts">
       <li v-for="post in filteredPosts" :key="post.id">
-        <router-link :to="{ name: 'PostDetails', params: { id: post.id } }">
+        <router-link :to="{ name: 'PostDetails', params: { id: post.id } }" class="post-link">
           {{ post.title }}
         </router-link>
       </li>
@@ -63,3 +63,38 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.post-list {
+  margin-top: 2rem;
+}
+
+.user-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.posts {
+  list-style-type: none;
+  padding: 0;
+}
+
+.post-link {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #35495e;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.post-link:hover {
+  background-color: #e9e9e9;
+}
+</style>
