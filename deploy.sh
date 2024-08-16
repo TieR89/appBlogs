@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/bin/bash
+
+export NODE_ENV=production
 
 # abort on errors
 set -e
