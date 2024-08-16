@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, inject } from 'vue'
 import axios from 'axios'
 
 export default {
@@ -26,16 +26,24 @@ export default {
   setup() {
     const posts = ref([])
     const users = ref([])
-    const selectedUserId = ref('')
+    const selectedUserId = inject('selectedUserId')
 
     const fetchPosts = async () => {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
-      posts.value = response.data
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+        posts.value = response.data
+      } catch (error) {
+        console.error('Error fetching posts:', error)
+      }
     }
 
     const fetchUsers = async () => {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-      users.value = response.data
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/users')
+        users.value = response.data
+      } catch (error) {
+        console.error('Error fetching users:', error)
+      }
     }
 
     const filteredPosts = computed(() => {

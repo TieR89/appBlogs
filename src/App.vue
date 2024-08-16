@@ -1,24 +1,30 @@
 <template>
   <div id="app">
     <header>
-      <h1 @click="goHome" class="home-link">App Blogs :)</h1>
+      <h1 @click="goHome" class="home-link">Vue 3 Blog</h1>
     </header>
     <main>
-      <router-view></router-view>
+      <router-view :key="$route.fullPath"></router-view>
     </main>
   </div>
 </template>
 
 <script>
 import { useRouter } from 'vue-router'
+import { provide, ref } from 'vue'
+
 export default {
   name: 'App',
   setup() {
     const router = useRouter()
+    const selectedUserId = ref('')
 
     const goHome = () => {
+      selectedUserId.value = ''
       router.push({ name: 'PostList' })
     }
+
+    provide('selectedUserId', selectedUserId)
 
     return {
       goHome
