@@ -3,7 +3,7 @@ import PostList from '@/components/PostList.vue'
 import PostDetails from '@/components/PostDetails.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(/appBlogs/),
   routes: [
     {
       path: '/',
